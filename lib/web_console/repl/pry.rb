@@ -1,3 +1,6 @@
+require 'pry'
+require 'web_console/repl'
+
 module WebConsole
   module REPL
     class Pry

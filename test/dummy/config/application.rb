@@ -12,4 +12,3 @@ module Dummy
     config.console = Pry
   end
 end
-

@@ -3,5 +3,7 @@ module WebConsole
     class Pry
       # Implementation goes here.
     end
+
+    register_adapter Pry
   end
 end

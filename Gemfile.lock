@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:gsamokovarov/web-console.git
-  revision: 0ae327c5373078a19493a14569e22ace5be0081b
+  revision: 33c7dc0e3ffe9aa1fd0da65e90b76ca0a68c7c10
   specs:
     web-console (0.0.1)
       rails (~> 4.0.0)

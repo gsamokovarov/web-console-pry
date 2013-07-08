@@ -1,4 +1,3 @@
-require 'fiber'
 require 'stringio'
 require 'pry'
 require 'web_console/repl'

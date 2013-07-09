@@ -7,25 +7,25 @@ class PryTest < ActiveSupport::TestCase
   end
 
   test 'sending input returns the result as output' do
-    assert_equal sprintf(return_prompt, '42'), @pry.send_input('foo = 42')
+    assert_equal return_prompt(42), @pry.send_input('foo = 42')
   end
 
   test 'session preservation requires same bindings' do
-    assert_equal sprintf(return_prompt, '42'), @pry1.send_input('foo = 42')
-    assert_equal sprintf(return_prompt, '42'), @pry2.send_input('foo')
+    assert_equal return_prompt(42), @pry1.send_input('foo = 42')
+    assert_equal return_prompt(42), @pry2.send_input('foo')
   end
 
   test 'session isolation requires own bindings' do
     pry1 = WebConsole::REPL::Pry.new(Object.new.instance_eval('binding'))
     pry2 = WebConsole::REPL::Pry.new(Object.new.instance_eval('binding'))
-    assert_equal sprintf(return_prompt, '42'), pry1.send_input('foo = 42')
+    assert_equal return_prompt(42), pry1.send_input('foo = 42')
     assert_match undefined_var_or_method('foo'), pry2.send_input('foo')
   end
 
   test 'multi-line support' do
     assert_equal '', @pry.send_input('class A')
-    assert_equal sprintf(return_prompt, 'nil'), @pry.send_input('end')
-    assert_equal sprintf(return_prompt, 'A'), @pry.send_input('A')
+    assert_equal return_prompt(nil), @pry.send_input('end')
+    assert_equal return_prompt('A'), @pry.send_input('A.name')
   end
 
   test "prompt isn't nil" do
@@ -39,8 +39,10 @@ class PryTest < ActiveSupport::TestCase
   end
 
   private
-    def return_prompt
-      "=> %s\n"
+    def return_prompt(value)
+      output = StringIO.new
+      ::Pry.config.print.call(output, value)
+      output.string
     end
 
     def undefined_var_or_method(name)

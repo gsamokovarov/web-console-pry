@@ -1,6 +1,6 @@
-require 'stringio'
 require 'pry'
 require 'web_console/repl'
+require 'web_console/stream'
 
 module WebConsole
   module REPL
@@ -20,8 +20,7 @@ module WebConsole
       def initialize(binding = ::Pry.toplevel_binding)
         @binding = binding
         @input   = FiberInput.new
-        @output  = StringIO.new
-        @pry     = ::Pry.new(input: @input, output: @output)
+        @pry     = ::Pry.new(input: @input)
         @fiber   = Fiber.new { enforce_supported_options! { @pry.repl(binding) } }.tap(&:resume)
       end
 
@@ -30,8 +29,7 @@ module WebConsole
       end
 
       def send_input(input)
-        @fiber.resume("#{input}\n")
-        extract_output!
+        Stream.threadsafe_capture! { @fiber.resume("#{input}\n") }
       end
 
       private
@@ -43,14 +41,6 @@ module WebConsole
           yield
         ensure
           ::Pry.config = original_config
-        end
-
-        def extract_output!
-          @output.rewind
-          @output.read.tap do
-            @output.truncate(0)
-            @output.rewind
-          end
         end
     end
 

@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/gsamokovarov/web-console.git
-  revision: 72eae61871ba02cd5a6fc8a3d6c021b69d4de6ea
+  revision: 42d08a448d32166b347af341f06d450015c34560
   specs:
     web-console (0.0.1)
       jquery-rails (~> 3.0.4)

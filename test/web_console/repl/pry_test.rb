@@ -28,6 +28,14 @@ class PryTest < ActiveSupport::TestCase
     assert_equal return_prompt('A'), @pry.send_input('A.name')
   end
 
+  test 'multiline support between threads' do
+    assert_equal "", @pry.send_input('class A')
+    Thread.new do
+      assert_equal return_prompt(nil), @pry.send_input('end')
+      assert_no_match %r{NameError}, @pry.send_input('A')
+    end.join
+  end
+
   test 'captures direct stdout output' do
     assert_equal "42\n#{return_prompt(nil)}", @pry.send_input('puts 42')
   end

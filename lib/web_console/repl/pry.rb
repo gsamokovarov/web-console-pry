@@ -1,5 +1,6 @@
 require 'pry'
 require 'web_console/repl'
+require 'web_console/fiber'
 require 'web_console/stream'
 
 module WebConsole
@@ -30,9 +31,6 @@ module WebConsole
 
       def send_input(input)
         Stream.threadsafe_capture! { @fiber.resume("#{input}\n") }
-      rescue FiberError
-        @fiber = Fiber.new { enforce_supported_options! { @pry.repl(binding) } }.tap(&:resume)
-        retry
       end
 
       private

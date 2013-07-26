@@ -30,6 +30,9 @@ module WebConsole
 
       def send_input(input)
         Stream.threadsafe_capture! { @fiber.resume("#{input}\n") }
+      rescue FiberError
+        @fiber = Fiber.new { enforce_supported_options! { @pry.repl(binding) } }.tap(&:resume)
+        retry
       end
 
       private

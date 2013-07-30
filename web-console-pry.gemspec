@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   # Uncomment once web-console is released.
-  #s.add_dependency "web-console", "~> 4.0.0"
+  s.add_dependency "web-console", "~> 0.1.0"
   s.add_dependency "pry", "~> 0.9.11"
 
   s.add_development_dependency "rails", "~> 4.0.0"

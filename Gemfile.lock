@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    web-console-pry (0.0.1)
+    web-console-pry (0.1.0)
       pry (~> 0.9.11)
       web-console (~> 0.1.0)
 

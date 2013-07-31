@@ -8,12 +8,13 @@ Gem::Specification.new do |s|
   s.authors  = ["Genadi Samokovarov", "Guillermo Iguaran"]
   s.email    = ["gsamokovarov@gmail.com", "guilleiguaran@gmail.com"]
   s.homepage = "https://github.com/gsamokovarov/web-console-pry"
-  s.summary  = "Rails Console on the Browser."
+  s.summary  = "Pry adapter for Web Console."
 
-  s.files      = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
+  s.license = "MIT"
+
+  s.files      = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.markdown"]
   s.test_files = Dir["test/**/*"]
 
-  # Uncomment once web-console is released.
   s.add_dependency "web-console", "~> 0.1.0"
   s.add_dependency "pry", "~> 0.9.11"
 

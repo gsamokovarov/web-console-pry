@@ -13,7 +13,7 @@ To install it in your current application, add the following to your `Gemfile`.
 
 ```ruby
 group :development do
-  gem 'web-console-pry', '~> 0.1.1'
+  gem 'web-console-pry', '~> 0.2.0'
 end
 ```
 
@@ -50,4 +50,4 @@ the [Web Console] session.
 _(Color support will probably make it into the future versions, though.)_
 
   [Terminal Emulators]: http://en.wikipedia.org/wiki/Terminal_emulator
-  [Web Console]: https://github.com/gsamokovarov/web-console
+  [Web Console]: https://github.com/gsamokovarov/web-console/tree/v0.2.0

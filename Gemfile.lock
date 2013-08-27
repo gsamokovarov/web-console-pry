@@ -1,9 +1,9 @@
 PATH
   remote: .
   specs:
-    web-console-pry (0.2.0)
+    web-console-pry (0.2.1)
       pry (~> 0.9.11)
-      web-console (~> 0.1.0)
+      web-console (>= 0.1.0, <= 0.2.0)
 
 GEM
   remote: https://rubygems.org/
@@ -90,7 +90,7 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.37)
-    web-console (0.1.0)
+    web-console (0.2.0)
       jquery-rails (~> 3.0.4)
       rails (~> 4.0.0)
 

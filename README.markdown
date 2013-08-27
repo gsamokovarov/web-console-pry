@@ -1,53 +1,20 @@
-[![Travis](https://travis-ci.org/gsamokovarov/web-console-pry.png)](https://travis-ci.org/gsamokovarov/web-console-pry)
+Deprecated
+==========
 
-Pry Support for Web Console
-===========================
+> [Web Console] doesn't try to be a terminal emulator.
 
-If you are one of those folks that prefer `Pry` over `IRB` for the Rails'
-console you can use this adapter to put a `Pry` session in your [Web Console].
+When we started out with [Web Console], we didn't wanted to use a full-blown
+terminal emulator on the web, but rather simulate the experience. However, some
+of the ideas we had about the project turn out to be hard or impossible with
+that approach.
 
-Installation
-------------
+As of [v0.3.0][Web Console], [Web Console] comes with a full featured VT100
+compatible terminal emulator. This makes any adapter obsolete, as we can easily
+run any terminal process. Running your pager or favorite terminal editor in
+_Pry_ is no longer a hassle.
 
-To install it in your current application, add the following to your `Gemfile`.
+We encourage you to just use the latest [Web Console]. Version [v0.2.1] would
+be the last one for [web-console-pry][v0.2.1].
 
-```ruby
-group :development do
-  gem 'web-console-pry', '~> 0.2.0'
-end
-```
-
-After you save the `Gemfile` changes, make sure to run `bundle install` and
-restart your server for the [Web Console] to take affect.
-
-Configuration
--------------
-
-By design, [Web Console] follows Rails' console configuration. This simply
-means, that it will use `IRB`, unless configured otherwise.
-
-```ruby
-# You may need to require 'pry' to get the ::Pry constant.
-require 'pry'
-
-class Application < Rails::Application
-  config.console = ::Pry
-end
-```
-
-For the full list of configuration options, visit [Web Console] homepage.
-
-Compatibility
--------------
-
-[Web Console] doesn't try to be a terminal emulator. While we try to provide
-what makes sense for a good user experience, we realize that [Terminal Emulators]
-are hard and even harder to put on the Web.
-
-Long story short, we'll explicitly disable `Pry` pager and colored output for
-the [Web Console] session.
-
-_(Color support will probably make it into the future versions, though.)_
-
-  [Terminal Emulators]: http://en.wikipedia.org/wiki/Terminal_emulator
-  [Web Console]: https://github.com/gsamokovarov/web-console/tree/v0.2.0
+  [Web Console]: https://github.com/gsamokovarov/web-console
+  [v0.2.1]: https://github.com/gsamokovarov/web-console-pry/tree/v0.2.1

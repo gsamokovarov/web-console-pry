@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.files      = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.markdown"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "web-console", "~> 0.1.0"
+  s.add_dependency "web-console", ">= 0.1.0", "<= 0.2.0"
   s.add_dependency "pry", "~> 0.9.11"
 
   s.add_development_dependency "rails", "~> 4.0.0"
